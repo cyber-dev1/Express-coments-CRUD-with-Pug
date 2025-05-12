@@ -1,6 +1,6 @@
 const form = document.querySelector(".jsForm");
 const createInput = document.querySelector(".createInput");
-const allInputs = document.querySelector(".editInput");
+// const allInputs = document.querySelector("");
 const createBtn = document.querySelector(".js-btn");
 
 createInput.addEventListener("change", (evt) => {
@@ -45,17 +45,19 @@ window.addEventListener("click", async (evt) => {
 
 })
 
-allInputs?.addEventListener("change", async () => {
-    const id = allInputs.dataset.id;
-    const text = allInputs.value;
+window.addEventListener("change", async (evt) => {
+    if (evt.target.matches('.editInput')) {
+        const id = evt.target.dataset.id;
+        const text = evt.target.value;
 
-    await fetch(`http://localhost:7000/coments/edit/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ text })
-    });
+        await fetch(`http://localhost:7000/coments/edit/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text })
+        });
+    }
 });
 
 
