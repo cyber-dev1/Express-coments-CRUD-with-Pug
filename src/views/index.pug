@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+        div(style="margin-left : 800px  ; ") 
+            form(style="width : 500px; height : 100px;").jsForm
+                input(type="text" style=" margin : 10px 10px 0px 10px ;").createInput
+                button(type="submit").js-btn create
+        div
+            ul 
+                each coment in coments
+                    li(style="margin :15px ;display : flex; align-items : center ; width : 240px; justify-content : space-between;") 
+                        input(type="text" value=coment.text  data-id=coment.id).editInput
+                        button(data-id=coment.id).deleteBtn delete
+        script(src="/js/index.js")
