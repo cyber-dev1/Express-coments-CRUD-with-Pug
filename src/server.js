@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("node:path");
 const fs = require("fs/promises");
+const dotenv = require("dotenv") ;
+dotenv.config();
 
 const app = express();
 
@@ -63,6 +65,6 @@ app.delete("/coments/delete/:id", async (req, res) => {
     res.json({ message: "Deleted", status: 200 });
 });
 
-app.listen(7000, () => {
-    console.log("Server is running on port 7000");
+app.listen(process.env.PORT || 7000, () => {
+    console.log("Server is running");
 });
